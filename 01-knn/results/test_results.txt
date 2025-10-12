@@ -1,0 +1,7 @@
+K-NN Classifier Test Results
+==============================
+Best K value: 1
+Test samples: 10000
+Accuracy: 97.22%
+Training data shape: (60000, 784)
+Test data shape: (10000, 784)

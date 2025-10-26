@@ -158,6 +158,8 @@ Fashion-MNIST 是一个用于图像分类任务的基准数据集，旨在替代
 
 ![](https://ai-studio-static-online.cdn.bcebos.com/c3e436607367476794bb3bfaf4ac3da17ad5870fcf514bbe8ff0fe57da99212c)
 
+
+
 ![](https://ai-studio-static-online.cdn.bcebos.com/02b6e7eb3c9c46ff95986e9ffd69e9731000120f30454f67beadbd1d40080067)
 
 这个数据集获取很简单，GitHub上就有，下载到本地后就可以在项目中运行了，具体处理步骤不再赘述。
@@ -344,7 +346,16 @@ $$W \leftarrow W - \eta \nabla_W L, \quad b \leftarrow b - \eta \nabla_b L$$
   3. 花瓣长度（petal length）  
   4. 花瓣宽度（petal width）
   
-  !(https://ai-studio-static-online.cdn.bcebos.com/feb179e5fef94a5c92ae5c746f04037f0c6077564b9a427190bf109c838e6583)
+ <div align="center">
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="assets/images/iris.png" alt="图2.3 Softmax总流程图 width="600">
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">图2.3 Softmax总流程图</div>
+</div>
 
   这个数据集简单易处理：特征均为连续数值，无缺失或异常值，无需复杂预处理。  
   

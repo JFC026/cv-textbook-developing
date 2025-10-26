@@ -193,7 +193,8 @@ class SoftmaxClassifier:
         return exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
 
 ```
-这个函数就定义了softmax的概率计算方式即：$p_{i,j} = \frac{e^{s_{i,j}}}{\sum_{k=1}^{C} e^{s_{i,k}}}$
+这个函数就定义了softmax的概率计算方式即：  
+ $p_{i,j} = \frac{e^{s_{i,j}}}{\sum_{k=1}^{C} e^{s_{i,k}}}$ 
 
 考虑到数值的稳定性不至于太大，我们可以做一个这样的变换：先减去行最大值 $m_i = \max_k s_{i,k}$ ，因为 $\frac{e^{s_{i,j}}}{\sum_{k} e^{s_{i,k}}} = \frac{e^{s_{i,j} - m_i}}{\sum_{k} e^{s_{i,k} - m_i}}$
 
@@ -234,7 +235,8 @@ $s_{i,j} = \sum_{k=1}^{D} x_{i,k} W_{k,j} + b_j$
 然后计算交叉熵的损失（每个batch平均）：
  $L_{\text{CE}} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{C} Y_{ij} \log p_{ij}$ 
 
-以及一个L2正则项：$L_{\text{reg}} = \frac{\lambda}{2} \sum_{a,b} W_{ab}^2$
+以及一个L2正则项：  
+$L_{\text{reg}} = \frac{\lambda}{2} \sum_{a,b} W_{ab}^2$
 
 （为什么这里加了一个正则项呢，因为这里的特征太多了并且一个批次数据较少，是为了防止过拟合！）
 
@@ -253,7 +255,7 @@ $$L^{(i)} = -\sum_{k=1}^{C} Y_{i,k} \log p_{i,k}, \quad p_{i,k} = \frac{e^{s_{i,
 3. 因此
 $$\frac{\partial L^{(i)}}{\partial s_{i,j}} = -\sum_{k} Y_{i,k} (\delta_{jk} - p_{i,j}) = -Y_{i,j} + p_{i,j} \sum_{k} Y_{i,k}$$
 
-对于 one-hot 标签，$\sum_{k} Y_{i,k} = 1$ ，得到：
+对于 one-hot 标签， $\sum_{k} Y_{i,k} = 1$  ，得到：
 
 $$\frac{\partial L^{(i)}}{\partial s_{i,j}} = p_{i,j} - Y_{i,j}$$
 

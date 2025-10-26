@@ -163,7 +163,7 @@ Fashion-MNIST 是一个用于图像分类任务的基准数据集，旨在替代
 
 ![](https://ai-studio-static-online.cdn.bcebos.com/02b6e7eb3c9c46ff95986e9ffd69e9731000120f30454f67beadbd1d40080067)
 
-这个数据集获取很简单，GitHub上就有，下载到本地后就可以在项目中运行了，具体处理步骤不再赘述。
+这个数据集获取很简单，GitHub上就有，下载到本地后就可以在项目中运行了，具体处理步骤不再赘述。由于Github文件大小的限制，data文件夹这里不再提供具体数据，可以去aistudio的链接查看。
 
 ## 2.结合算法数学逻辑书写代码
 

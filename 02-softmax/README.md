@@ -135,6 +135,7 @@ $$L_{CE} = -\sum_{i=1}^{n}t_i\log(p_i) = -\log(p_{\text{true}})$$
     color: #999;
     padding: 2px;">图2.3 Softmax总流程图</div>
 </div>
+
 ## 项目简介
 
 ## 代码实现

@@ -170,7 +170,7 @@ if standardize:
     x = (x - mean) / (std + 1e-8)
 ```
 
-随后通过对每一个像素点独立计算$x' = \frac{x - \mu}{\sigma}$将数据标准化为均值为0，标准差为1的分布，在多层网络的梯度下降中加快收敛速度:
+随后通过对每一个像素点独立计算 $x' = \frac{x - \mu}{\sigma}$ 将数据标准化为均值为0，标准差为1的分布，在多层网络的梯度下降中加快收敛速度:
 
 ```python
 if standardize:
@@ -265,8 +265,8 @@ def __init__(self, input_size, hidden_size, output_size):
 ### 权重初始化
 
 在 `two_layer_net.py` 中，我们吸取了教训，不再使用简单的 `np.random.randn`。
-* **FC1 (接ReLU)**: 使用 **He 初始化**。$\text{scale} = \sqrt{2.0 / D_{in}}$
-* **FC2 (接Softmax)**: 使用 **Xavier 初始化**。$\text{scale} = \sqrt{1.0 / H}$
+* **FC1 (接ReLU)**: 使用 **He 初始化**。 $\text{scale} = \sqrt{2.0 / D_{in}}$
+* **FC2 (接Softmax)**: 使用 **Xavier 初始化**。 $\text{scale} = \sqrt{1.0 / H}$
 
 ```python
 # src/models/two_layer_net.py
@@ -344,7 +344,7 @@ def train_step(self, x_batch, y_batch, optimizer):
 
 **Step 1: 损失 -> 得分 (Scores)**
 我们从 `CrossEntropyLoss` 的 `backward()` 开始。
-* **数学原理**: Softmax 与交叉熵结合的导数有一个简洁的形式：$\frac{\partial L}{\partial S} = P - Y$ (其中 $P$ 是 Softmax 概率， $Y$ 是 one-hot 标签)。
+* **数学原理**: Softmax 与交叉熵结合的导数有一个简洁的形式： $\frac{\partial L}{\partial S} = P - Y$  (其中 $P$ 是 Softmax 概率， $Y$ 是 one-hot 标签)。
 * **代码实现**: `dscores = (probs - labels_one_hot) / batch_size`。
 * **在 `train_step` 中调用**: `dscores = self.loss_fn.backward()`。
 
@@ -361,7 +361,7 @@ def train_step(self, x_batch, y_batch, optimizer):
 梯度 `da1` (即 $\frac{\partial L}{\partial A_1}$) 进入 `relu` 层。
 * **数学原理**:
     * $A_1 = \max(0, H_1)$
-    * ReLU的导数是阶跃函数：$\frac{\partial A_1}{\partial H_1} = \mathbb{I}(H_1 > 0)$ (即 $H_1 > 0$ 时为1，否则为0)。
+    * ReLU的导数是阶跃函数： $\frac{\partial A_1}{\partial H_1} = \mathbb{I}(H_1 > 0)$  (即 $H_1 > 0$ 时为1，否则为0)。
     * $\frac{\partial L}{\partial H_1} = \frac{\partial L}{\partial A_1} \cdot \frac{\partial A_1}{\partial H_1} = da1 \cdot \mathbb{I}(H_1 > 0)$
 * **代码实现**: `dh1 = self.relu.backward(da1)`。`dx = dout * (x > 0)`。
 
@@ -457,19 +457,19 @@ def train_step(self, x_batch, y_batch, optimizer):
     return loss
 ```
 
-首先，在前向传播阶段，模型接收输入批次 $x_{\text{batch}}$，并依次通过各层的线性变换与非线性激活函数进行映射，最终得到输出结果 $\text{scores}$。随后，通过损失函数（例如交叉熵损失，Cross-Entropy Loss）计算预测结果与真实标签 $y_{\text{batch}}$ 之间的差异，得到当前批次的损失值 $L$，用于量化模型预测误差的大小。
+首先，在前向传播阶段，模型接收输入批次 $x_{\text{batch}}$ ，并依次通过各层的线性变换与非线性激活函数进行映射，最终得到输出结果 $\text{scores}$ 。随后，通过损失函数（例如交叉熵损失，Cross-Entropy Loss）计算预测结果与真实标签 $y_{\text{batch}}$ 之间的差异，得到当前批次的损失值 $L$ ，用于量化模型预测误差的大小。
 
 $$
 L = \text{Loss}(\hat{y}, y) = -\sum_i y_i \log(\hat{y}_i)
 $$
 
-在反向传播阶段，模型根据损失函数对输出层得分 $\text{scores}$ 的偏导数 $\frac{\partial L}{\partial \text{scores}}$ 逐层传播误差信号，计算各可学习参数（权重 $W$ 与偏置 $b$）的梯度。该过程遵循链式法则（Chain Rule），即每一层的梯度依赖于后一层的梯度及本层的激活函数导数。
+在反向传播阶段，模型根据损失函数对输出层得分 $\text{scores}$ 的偏导数 $\frac{\partial L}{\partial \text{scores}}$ 逐层传播误差信号，计算各可学习参数（权重 $W$ 与偏置 $b$ ）的梯度。该过程遵循链式法则（Chain Rule），即每一层的梯度依赖于后一层的梯度及本层的激活函数导数。
 
-为了防止深层网络训练过程中出现梯度爆炸（Gradient Explosion）等数值不稳定问题，`train_step()` 函数在参数更新前引入了梯度裁剪（Gradient Clipping）机制。当总体梯度范数超过设定阈值 $\text{max\_norm}$ 时，对梯度向量进行等比例缩放：
+为了防止深层网络训练过程中出现梯度爆炸（Gradient Explosion）等数值不稳定问题，`train_step()` 函数在参数更新前引入了梯度裁剪（Gradient Clipping）机制。当总体梯度范数超过设定阈值 $\text{max-norm} $ 时，对梯度向量进行等比例缩放：
 
 $$
-g \leftarrow g \cdot \frac{\text{max\_norm}}{\|g\| + \varepsilon}
-$$
+g_i \leftarrow g_i \cdot \frac{\text{max-norm}}{\|\|g\|\| + \varepsilon}
+$$ 
 
 该操作可有效限制参数更新步长，从而提升训练的稳定性。
 
@@ -479,7 +479,7 @@ $$
 W \leftarrow W - \eta \frac{\partial L}{\partial W}
 $$
 
-其中，$\eta$ 表示学习率，$\frac{\partial L}{\partial W}$ 为损失函数对参数的梯度。
+其中， $\eta$ 表示学习率， $\frac{\partial L}{\partial W}$ 为损失函数对参数的梯度。
 
 完成参数更新后，更新后的权重与偏置将被同步至各层结构中，以保证下一次迭代时模型使用最新的参数。如流程图所示，最终获得损失值。
 
@@ -520,7 +520,7 @@ $$
 
 ## 梯度裁剪
 
-在神经网络的训练过程中，梯度的数值规模对模型的稳定性具有重要影响。对于深层网络或循环神经网络（RNN）而言，梯度在反向传播中可能会出现指数级增长的现象，即所谓的梯度爆炸（Gradient Explosion）。该问题会导致参数更新步长过大，从而引起训练过程发散或损失值震荡。为缓解这一问题，本研究在模型训练中引入了梯度裁剪（Gradient Clipping）机制，其核心思想是限制整体梯度向量的范数，使其不超过预设阈值 $\text{max\_norm}$。
+在神经网络的训练过程中，梯度的数值规模对模型的稳定性具有重要影响。对于深层网络或循环神经网络（RNN）而言，梯度在反向传播中可能会出现指数级增长的现象，即所谓的梯度爆炸（Gradient Explosion）。该问题会导致参数更新步长过大，从而引起训练过程发散或损失值震荡。为缓解这一问题，本研究在模型训练中引入了梯度裁剪（Gradient Clipping）机制，其核心思想是限制整体梯度向量的范数，使其不超过预设阈值 $\text{max-norm}$。
 
 梯度裁剪函数的实现如下所示：
 
@@ -540,33 +540,36 @@ def _clip_gradients(self, grads, max_norm=5.0):
     return grads
 ```
 
-如上所示，函数首先计算所有梯度张量的平方和，并取平方根得到全局梯度的二范数（L2 norm）：
+如上所示，函数首先计算所有梯度张量的平方和，并取平方根得到全局梯度的二范数（L2 norm）： 
+
 
 $$
 \|g\| = \sqrt{\sum_i g_i^2}
 $$
 
-若该范数超过设定阈值 $\text{max\_norm}$，则计算缩放系数（clipping coefficient）：
+若该范数超过设定阈值 $\text{max-norm}$  ，则计算缩放系数（clipping coefficient）： 
 
 $$
-\text{clip\_coef} = \frac{\text{max\_norm}}{\|g\| + \varepsilon}
+\text{clip-coef} = \frac{\text{max-norm}}{|g| + \varepsilon}
 $$
 
 并对所有梯度执行等比例缩放：
+
 $$
-g_i \leftarrow g_i \times \text{clip\_coef}
+g_i \leftarrow g_i \times \text{clip-coef}
 $$
 
-其中，$\varepsilon$ 为防止除零错误的微小常数。
+其中， $\varepsilon$ 为防止除零错误的微小常数。
 
-通过上述操作，可以保证所有梯度的全局范数满足：
+通过上述操作，可以保证所有梯度的全局范数满足： 
+
 $$
-\|g\| \leq \text{max\_norm}
+\|g\| \leq \text{max-norm}
 $$
 
 该约束有效地抑制了反向传播过程中的梯度爆炸，从而防止参数更新过快导致的训练不稳定现象。此外，梯度裁剪还可间接提升优化器（如 Adam、RMSProp）在早期训练阶段的收敛性，使模型在较大学习率下仍能保持平稳收敛。
 
-综上，梯度裁剪机制在深度网络训练中起到了重要的数值稳定化作用，其数学实质是对梯度向量施加一个球形约束（spherical constraint），即将其限制在半径为 $\text{max\_norm}$ 的超球体内。这一策略在防止训练发散、加速收敛及提高模型鲁棒性方面均具有显著效果。
+综上，梯度裁剪机制在深度网络训练中起到了重要的数值稳定化作用，其数学实质是对梯度向量施加一个球形约束（spherical constraint），即将其限制在半径为 $\text{max-norm}$ 的超球体内。这一策略在防止训练发散、加速收敛及提高模型鲁棒性方面均具有显著效果。
 
 ## 输出预测值
 
@@ -579,27 +582,30 @@ def predict(self, x):
     return np.argmax(probs, axis=1)
 ```
 
-该函数首先调用 `forward()` 方法对输入样本 $x$ 进行前向传播，得到每个类别的未归一化得分向量 $\text{scores}$。该向量的计算过程可表示为：
+该函数首先调用 `forward()` 方法对输入样本 $x$ 进行前向传播，得到每个类别的未归一化得分向量 $\text{scores}$ 。该向量的计算过程可表示为：
 
 $$
 \text{scores} = W_2 \, f(W_1 x + b_1) + b_2
 $$
 
-其中，$f(\cdot)$ 表示隐藏层激活函数（例如 ReLU），$W_1, W_2$ 分别为第一层与第二层的权重矩阵，$b_1, b_2$ 为对应偏置项。
+其中， $f(\cdot)$ 表示隐藏层激活函数（例如 ReLU）， $W_1, W_2$ 分别为第一层与第二层的权重矩阵， $b_1, b_2$ 为对应偏置项。
 
 随后，模型通过 Softmax 函数将得分向量转换为概率分布，以确保所有类别的概率值非负且总和为 1：
+
 $$
 p_i = \frac{e^{\text{scores}_i}}{\sum_j e^{\text{scores}_j}}
 $$
 
-其中，$p_i$ 表示样本属于第 $i$ 类的预测概率。
+其中， $p_i$ 表示样本属于第 $i$ 类的预测概率。
 
 最终，函数通过取概率最大值对应的索引（即 `np.argmax(probs, axis=1)`）作为预测类别标签：
+
 $$
 \hat{y} = \arg \max_i p_i
 $$
 
 综上，`predict()` 函数的数学表达式可概括为：
+
 $$
 \hat{y} = \arg \max
 $$

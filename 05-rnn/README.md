@@ -477,7 +477,7 @@ inputs[7]: [4,1,?]  # 最后一个（实际没有第12个字符）
 #### 3.1 前向传播实现
 1.进行one-hot编码:
 
-对于每个字符索引 $i_t$ 转换为one-hot向量：$x_t = {one\_hot}(i_t) \in \mathbb{R}^{V \times 1}$
+对于每个字符索引 $i_t$ 转换为one-hot向量： $x_t = {onehot}(i_t) \in \mathbb{R}^{V \times 1}$  
 
 ```python
 for t in range(len(inputs)):
@@ -489,7 +489,10 @@ for t in range(len(inputs)):
 
 
 
-其中 ${x}_t[j] = \begin{cases} 1 & \text{if } j = i_t \\ 0 & \text{otherwise} \end{cases}$
+其中 
+
+$${x}_t[j] = \begin{cases} 1 & \text{if } j = i_t \\ 
+0 & \text{otherwise} \end{cases}$$
 
 这样解决了网络输入是连续值，但字符是离散的问题。
 
@@ -500,13 +503,13 @@ hs[t] = np.tanh(np.dot(self.Wxh, xs[t]) + np.dot(self.Whh, hs[t-1]) + self.bh)
 
 隐藏状态使用tanh激活函数:
 
-${h}_t = \tanh(W_{xh}{x}_t + W_{hh}{x}_{t-1} + {b}_h)$
+$${h}_t = \tanh(W_{xh}{x}_t + W_{hh}{x}_{t-1} + {b}_h)$$
 
 分布计算如下：
 
-（1）输入转换: ${a}_t = W_{xh}{x}_t \in \mathbb{R}^{H \times 1}$
+（1）输入转换: ${a}_ t = W_{xh}{x}_t \in \mathbb{R}^{H \times 1}$
 
-（2）循环连接: ${b}_t = W_{hh}{h}_{t-1} \in \mathbb{R}^{H \times 1}$
+（2）循环连接: ${b}_ t = W_{hh}{h}_{t-1} \in \mathbb{R}^{H \times 1}$
 
 （3）总和: ${z}_t = {a}_t + {b}_t +{b}_h \in \mathbb{R}^{H \times 1}$
 
@@ -517,7 +520,7 @@ ${h}_t = \tanh(W_{xh}{x}_t + W_{hh}{x}_{t-1} + {b}_h)$
 ```python
 ys[t] = np.dot(self.Why, hs[t]) + self.by
 ```
-${y}_t = W_{hy}{h}_t + {b}_y \in \mathbb{R}^{V \times 1}$
+$${y}_ t = W_{hy}{h}_t + {b}_y \in \mathbb{R}^{V \times 1}$$
 
 
 4.概率分布
@@ -532,7 +535,7 @@ def softmax(self, x):
 
 使用 softmax函数将输出转换为概率分布：
 
-${p}_t = \text{softmax}({y}_t) = \frac{\exp({y}_t)}{\sum_{j=1}^{V} \exp({y}_t[j])}$
+$${p}_t = \text{softmax}({y}_t) = \frac{\exp({y}_t)}{\sum_{j=1}^{V} \exp({y}_t[j])}$$
 
 其中 $p_t[k]$ 表示下一个字符是第k个字符的概率。
 
@@ -550,13 +553,13 @@ def loss(self, ps, targets):
 
 对于序列中的每个时间步 $t$ ,损失为：
 
-$L_t = -\log {p}_t[{target}_t]$
+$$L_t = -\log {p}_t[{target}_t]$$
 
 其中 $target_t$ 是时间步 $t$ 的真实下一个字符索引.
 
 总损失(对序列求和)：
 
-$L = \sum_{t=0}^{T-1} L_t = -\sum_{t=0}^{T-1} \log {p}_t[\text{target}_t]$
+$$L = \sum_{t=0}^{T-1} L_t = -\sum_{t=0}^{T-1} \log {p}_t[\text{target}_t]$$
 
 #### 3.2 反向传播实现
 
@@ -579,9 +582,9 @@ dby += dy                     # Σ_t dy_t
 
 输出层参数：
 
-$\frac{\partial L}{\partial W_{hy}} = \sum_{t=0}^{T-1} \frac{\partial L_t}{\partial {y}_t} \cdot {h}_t^T = \sum_{t=0}^{T-1} d{y}_t \cdot {h}_t^T$
+$$\frac{\partial L}{\partial W_{hy}} = \sum_{t=0}^{T-1} \frac{\partial L_t}{\partial {y}_ t} \cdot {h}_ t^T = \sum_{t=0}^{T-1} d{y}_t \cdot {h}_t^T$$
 
-$\frac{\partial L}{\partial {b}_y} = \sum_{t=0}^{T-1} \frac{\partial L_t}{\partial {y}_t} = \sum_{t=0}^{T-1} d{y}_t$
+$$\frac{\partial L}{\partial {b}_ y} = \sum_{t=0}^{T-1} \frac{\partial L_t}{\partial {y}_ t} = \sum_{t=0}^{T-1} d{y}_t$$
 
 
 隐藏层梯度：
@@ -604,13 +607,16 @@ dWhh += np.dot(dhraw, hs[t-1].T)  # Σ_t dh_raw h_{t-1}^T
 dhnext = np.dot(self.Whh.T, dhraw)  # W_hh^T dh_raw
 ```
 
-1.隐藏层接收来自两个方向的梯度：输出层: $W_{hy}^T \cdot d{y}_t$ 下一个时间步: $d{h}_{\text{next}}$（通过循环连接）
+1.隐藏层接收来自两个方向的梯度：  
 
-$d{h}_t = \frac{\partial L}{\partial {h}_t} = W_{hy}^T \cdot d{y}_t + d{h}_{\text{next}}$
+输出层: $W_{hy}^T \cdot d{y}_ t$    
+下一个时间步: $d{h}_{\text{next}}$ （通过循环连接）
+
+$$d{h}_ t = \frac{\partial L}{\partial {h}_ t} = W_{hy}^T \cdot d{y}_ t + d{h}_{\text{next}}$$
 
 2.tanh激活函数的梯度:
 
-设 ${z}_t = W_{xh}{x}_t + W_{hh}{h}_{t-1} + {b}_h$，则:
+设 ${z}_ t = W_{xh}{x}_ t + W_{hh}{h}_{t-1} + {b}_h$ ，则:
 
 $\frac{\partial {h}_t}{\partial {z}_t} = 1 - {h}_t^2$（因为 ${h}_t = \tanh({z}_t), \tanh'(x) = 1 - \tanh^2(x)$）
 
@@ -620,15 +626,15 @@ $d{h}_{\text{raw}} = \frac{\partial L}{\partial {z}_t} = d{h}_t \odot (1 - {h}_t
 
 3.输入层和循环层参数梯度:
 
-$\frac{\partial L}{\partial W_{xh}} = \sum_{t=0}^{T-1} d{h}_{\text{raw}} \cdot {x}_t^T$
+$$\frac{\partial L}{\partial W_{xh}} = \sum_{t=0}^{T-1} d{h}_{\text{raw}} \cdot {x}_t^T$$
 
-$\frac{\partial L}{\partial W_{hh}} = \sum_{t=0}^{T-1} d{h}_{\text{raw}} \cdot {h}_{t-1}^T$
+$$\frac{\partial L}{\partial W_{hh}} = \sum_{t=0}^{T-1} d{h}_{\text{raw}} \cdot {h}_{t-1}^T$$
 
-$\frac{\partial L}{\partial {b}_h} = \sum_{t=0}^{T-1} d{h}_{\text{raw}}$
+$$\frac{\partial L}{\partial {b}_h} = \sum_{t=0}^{T-1} d{h}_{\text{raw}}$$
 
 4.传递给前一时间步的梯度:
 
-$d{h}_{\text{next}} = \frac{\partial L}{\partial {h}_{t-1}} = W_{hh}^T \cdot d{h}_{\text{raw}}$
+$$d{h}_ {\text{next}} = \frac{\partial L}{\partial {h}_ {t-1}} = W_{hh}^T \cdot d{h}_{\text{raw}}$$
 
 
 #### 3.3 梯度裁剪
@@ -641,7 +647,10 @@ for dparam in [dWxh, dWhh, dWhy, dbh, dby]:
 
 为防止梯度爆炸，使用梯度裁剪：
 
-$dparam = \begin{cases} -5 & \text{if } dparam < -5 \\ 5 & \text{if } dparam > 5 \\ dparam & \text{otherwise} \end{cases}$
+$$dparam = \begin{cases} -5 & \text{if } dparam < -5 \\
+5 & \text{if } dparam > 5 \\ 
+dparam & \text{otherwise} 
+\end{cases}$$
 
 
 #### 3.4 优化器（Adagrad）
@@ -986,4 +995,5 @@ Original RNN 困惑度快速降至 7.5 左右并稳定；Improved RNN 困惑度�
 虽然 RNN 为视觉任务引入了时间维度，但在处理超长视频流时，它仍面临着计算效率低（无法并行化）和长程记忆丢失的挑战。如今，Vision Transformer (ViT) 及其变体 Video Swin Transformer 等正在吸收 RNN 的序列建模思想，利用自注意力机制（Self-Attention）在更广阔的时空维度上捕捉关联。
 
 至此，我们共同从零开始，完成了五种计算机视觉中经典算法的原理学习、应用流程以及具体python实现。希望这些教学对读者们有所帮助，也希望与读者们共同进步！
+
 

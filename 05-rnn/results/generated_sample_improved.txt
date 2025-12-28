@@ -1,0 +1,6 @@
+=== Standard Sampling (temperature=0.7) ===
+CIE mor tre wid aRh itr b ateetelm sitas gon lea wont fir the gife bus on k the, ton, the hos amer th eig we s aeldal daite te lou won net ch amintet ir cr inensed s.
+H thee m tonini tor the he ase, c
+
+=== Top-k Sampling (k=5, temperature=0.7) ===
+goud she me the sotil and th thonte thet anesde son hin th tons the totend th sol sh sil me this than me h sher anse sin th se the thande s hatou te d thes shes sil touder thetitin th ate are the s me

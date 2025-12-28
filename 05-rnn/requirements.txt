@@ -1,0 +1,12 @@
+# RNN Project Complete Dependencies
+# 基础库
+numpy>=1.19.0                    # 数值计算
+matplotlib>=3.3.0                # 数据可视化
+pyyaml>=5.3.0                    # YAML配置文件解析
+
+# 可选：模型评估与诊断
+scikit-learn>=0.24.0             # 机器学习工具 (用于评估指标)
+seaborn>=0.11.0                  # 统计可视化 (用于高级图表)
+
+# 可选：性能优化
+tqdm>=4.62.0                     # 进度条显示

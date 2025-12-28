@@ -1,0 +1,28 @@
+data:
+  data_dir: data
+  seq_length: 25
+  train_split: 0.85
+  val_split: 0.1
+improved:
+  dropout_rate: 0.1
+  top_k_sampling: 5
+  use_lr_schedule: true
+  warmup_epochs: 5
+model:
+  clip_grad: 5.0
+  hidden_size: 128
+  learning_rate: 0.001
+results:
+  model_save_path: results/rnn_model_improved.pkl
+  plots_dir: results/plots
+  save_dir: results
+training:
+  batch_size: 32
+  early_stopping: true
+  epochs: 100
+  min_delta: 0.0005
+  patience: 30
+  print_every: 5
+  random_seed: 42
+  sample_every: 10
+  sample_length: 200

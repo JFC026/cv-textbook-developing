@@ -1,0 +1,124 @@
+{
+  "model_info": {
+    "name": "SimpleRNN",
+    "vocab_size": 65,
+    "hidden_size": 128,
+    "seq_length": 25,
+    "batch_size": 32,
+    "model_path": "e:\\app\\Github\\cv-textbook-developing\\05-rnn\\results\\rnn_model_original.pkl"
+  },
+  "loss_and_perplexity": {
+    "test_loss": 1.8965612350235133,
+    "test_perplexity": 6.662942708061777,
+    "evaluation_time": 1.3450639247894287,
+    "num_batches": 277,
+    "samples_per_second": 41463.45684554064,
+    "avg_batch_size": 8
+  },
+  "generation_quality": {
+    "samples": [
+      {
+        "text": "e:\nWhere it on this but and ending is the mecting words by such an eyes.\n\nFoopaking anard, and tell that see!\n\nQUEEN ELIZABETH:\nI' the fame you have means them for you resomins will and my from of per",
+        "generation_time": 0.010053157806396484,
+        "chars_per_second": 19894.24654935256,
+        "temperature": 0.7
+      },
+      {
+        "text": " Busingbroves.\n\nHENRY BOLINGBROKE:\nNo, thou unto the plaisalion, from our this counsel in the grong,\nAnd hand made in heaven in the batter in my noble to still waft a seed--\n\nTARCALE:\nMy fletter and b",
+        "generation_time": 0.010948657989501953,
+        "chars_per_second": 18267.07895997561,
+        "temperature": 0.7
+      },
+      {
+        "text": "lO:\nI met much peace is never and to his trumpet.\n\nFRIAR LAURENCE:\nA lease works\nTor, And streign,\nWithou love and hate bistare\n'eshers, I would be never?\n\nJULIET:\nWhat is the earth and that doth to m",
+        "generation_time": 0.010762214660644531,
+        "chars_per_second": 18583.535666814354,
+        "temperature": 0.7
+      },
+      {
+        "text": "e:\nThat not and would be with the charity\nour away my man's fair drow incling apties, good me set the seed\nMost A gontty maid the strove for the bedend;\nIn enseam of this to stand that shames the ford",
+        "generation_time": 0.011039018630981445,
+        "chars_per_second": 18117.552536662275,
+        "temperature": 0.7
+      },
+      {
+        "text": "sh him lies, as that be stint their honour, but the pient of the true that are be in ob so seash.\n\nKING RICHARD II:\nGood for the feat is is the ression, and peased thee--\n\nMENENIUS:\nAn, love never hav",
+        "generation_time": 0.00742650032043457,
+        "chars_per_second": 26930.585251532953,
+        "temperature": 0.7
+      }
+    ],
+    "diversity_scores": [
+      0.21,
+      0.21,
+      0.2,
+      0.155,
+      0.18
+    ],
+    "coherence_scores": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "repetition_rates": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "vocabulary_usage": [
+      0.6461538461538462,
+      0.6461538461538462,
+      0.6153846153846154,
+      0.47692307692307695,
+      0.5538461538461539
+    ],
+    "avg_diversity": 0.191,
+    "avg_coherence": 0.0,
+    "avg_repetition": 0.0,
+    "avg_vocabulary_usage": 0.5876923076923077,
+    "avg_generation_speed": 20358.59979286755
+  },
+  "model_size_and_efficiency": {
+    "total_parameters": 33217,
+    "total_with_optimizer": 99651,
+    "memory_mb": 0.12671279907226562,
+    "optimizer_memory_mb": 0.25342559814453125,
+    "total_memory_mb": 0.3801383972167969,
+    "parameter_breakdown": {
+      "Wxh": 8320,
+      "Whh": 16384,
+      "Why": 8320,
+      "bh": 128,
+      "by": 65
+    },
+    "parameters_per_million": 0.033217,
+    "efficiency_score": 200.58833452936076
+  },
+  "inference_speed": {
+    "avg_inference_time": 0.005280670000047394,
+    "std_inference_time": 0.0005859085629138288,
+    "chars_per_second": 18936.990949842067,
+    "inference_speed_std_percent": 11.095345153334147
+  },
+  "training_history": {
+    "final_train_loss": 1.510442715109525,
+    "final_val_loss": 2.0032440968810423,
+    "best_val_loss": 2.0019213194192464,
+    "test_perplexity": 8.108045204327883,
+    "best_epoch": 23,
+    "total_training_time": 1089.0994420051575,
+    "early_stopped": true,
+    "epochs_trained": 33,
+    "train_stability": 0.9955307883552085,
+    "val_stability": 0.9997324389887706,
+    "convergence_speed": 3,
+    "final_learning_rate": 0.000857375,
+    "seconds_per_epoch": 33.00301339409568,
+    "chars_per_second": 33796.73203415864
+  },
+  "comprehensive_score": 0.35256742218794856
+}

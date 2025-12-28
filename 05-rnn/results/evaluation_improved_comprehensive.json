@@ -1,0 +1,227 @@
+{
+  "model_info": {
+    "name": "ImprovedRNN",
+    "vocab_size": 65,
+    "hidden_size": 128,
+    "dropout_rate": 0.1,
+    "model_path": "e:\\app\\Github\\cv-textbook-developing\\05-rnn\\results\\rnn_model_improved.pkl"
+  },
+  "loss_and_perplexity": {
+    "test_loss": 2.649893011370478,
+    "test_perplexity": 14.152524405183618,
+    "evaluation_time": 1.0787410736083984,
+    "num_batches": 277,
+    "samples_per_second": 51700.08018091451,
+    "evaluation_mode": "without_dropout"
+  },
+  "sampling_strategies": {
+    "strategies": {
+      "\u8d2a\u5a6a\u91c7\u6837": {
+        "samples": [
+          {
+            "text": "e the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the th",
+            "generation_time": 0.010769367218017578,
+            "chars_per_second": 18571.19326986938
+          },
+          {
+            "text": "he the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the t",
+            "generation_time": 0.010738372802734375,
+            "chars_per_second": 18624.795737122557
+          },
+          {
+            "text": "he the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the t",
+            "generation_time": 0.01082301139831543,
+            "chars_per_second": 18479.145280317214
+          }
+        ],
+        "diversity_scores": [
+          0.02,
+          0.02,
+          0.02
+        ],
+        "coherence_scores": [
+          0.9790575916230366,
+          0.9790575916230366,
+          0.9790575916230366
+        ],
+        "repetition_rates": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "avg_diversity": 0.02,
+        "avg_coherence": 0.9790575916230365,
+        "avg_repetition": 0.0
+      },
+      "\u6807\u51c6\u91c7\u6837": {
+        "samples": [
+          {
+            "text": "Thar watetan, che felis ghif sles to,\n\nWen fa won; th,e sotesnenteRtr thes d ne gh theg l the tok de tton me the ph suna comsthedem yim s mitatem a n ce athos me afhe nans bulnelass dei wal thor he\nte",
+            "generation_time": 0.011659622192382812,
+            "chars_per_second": 17153.214460984786
+          },
+          {
+            "text": "on nh\nI thacov it thas; thon wour fales nh r th, monnsen arit s go tor tha s he il biur gme asid y sh thif sosas son famtd th thes ba thes thel theavel toronmiul ttou the s or M ken ous gimot sklis hi",
+            "generation_time": 0.012475967407226562,
+            "chars_per_second": 16030.820975386026
+          },
+          {
+            "text": "lar therll his thy the foulve r gh iv sour se s so thisilt h me mene s h aautonre ous misa aowedivr tont Bov atos the ded takon fit shelatiche thi s:\nS t toon atonpet fhernte rtotor seond sor tor ton ",
+            "generation_time": 0.010492801666259766,
+            "chars_per_second": 19060.68620768007
+          }
+        ],
+        "diversity_scores": [
+          0.14,
+          0.135,
+          0.13
+        ],
+        "coherence_scores": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "repetition_rates": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "avg_diversity": 0.135,
+        "avg_coherence": 0.0,
+        "avg_repetition": 0.0
+      },
+      "\u9ad8\u968f\u673a\u6027": {
+        "samples": [
+          {
+            "text": "MJo:\nci v yo twBufciriy GureRwaelil h le\nkesy chas cn tesusedde y cz thy\nKIS\nVGl rar.\nAS:-sEAUW:\nDRN\n\n:\nHibuoeidel\naf\nILyAvenha-nr.\nJiK, tou:itT pro, thye\nWou W wtons! dpeOthetami g'w;-win sevg gond; ",
+            "generation_time": 0.009596109390258789,
+            "chars_per_second": 20841.77991999801
+          },
+          {
+            "text": "qn\nWotk,h ghe'revam fhef thecpofe.\nI:\nY toole,\nROE:\nAT:\nRERiU h.\n:GtS:\n'riyotigiaalb thl   dasaluul t fsf Bhdcor h ' wi myd heprwn'g,ge gaathorng hian\nadeA aa,eWpI\nSOp Twiut,\nAERHqrcge\nXkioil' ak aryd",
+            "generation_time": 0.011190176010131836,
+            "chars_per_second": 17872.819857249386
+          },
+          {
+            "text": "TIh'gfal wreo dort fe muav mIFtay\nH!\nAERnTpE jiNse,\nTh , ent! et, kald; ws mesrih telu;inkes mam, km.ahr,s:\nWeess atanedcyee\nw te, fhor.enssnng thas:ey,aE he doid st, tovit cee't lonotsnbvoaldi yuasor",
+            "generation_time": 0.010607242584228516,
+            "chars_per_second": 18855.041582378064
+          }
+        ],
+        "diversity_scores": [
+          0.255,
+          0.215,
+          0.2
+        ],
+        "coherence_scores": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "repetition_rates": [
+          0.0,
+          0.015,
+          0.0
+        ],
+        "avg_diversity": 0.2233333333333333,
+        "avg_coherence": 0.0,
+        "avg_repetition": 0.005
+      },
+      "Top-k (k=5)": {
+        "samples": [
+          {
+            "text": " bithes athe s hot minse s and m met tar an taur she tond te de me thondens tor the sond hathens tor s an the te sot mor hente th hes thar mout thor shete the tortot th se met hond she the merd thando",
+            "generation_time": 0.013637304306030273,
+            "chars_per_second": 14665.654993968426
+          },
+          {
+            "text": "E\nAThilend tir tares ater h mou the has the the tout sit thon thit me th son ant se andet athin au the h tond an titerte terd mir tharitee s hou thatortend m titer tonsa nat he th he the antonder sh s",
+            "generation_time": 0.012891054153442383,
+            "chars_per_second": 15514.635003421554
+          },
+          {
+            "text": "\nWhir ser he aus se dend th then tou tons m at ar se son tauth\nI thas tor sout sis me an tor s and torter sou h malons athe h the he the the th tor ter the te toutentee shin the toret ar thas mon an t",
+            "generation_time": 0.0119476318359375,
+            "chars_per_second": 16739.719029374202
+          }
+        ],
+        "diversity_scores": [
+          0.07,
+          0.09,
+          0.085
+        ],
+        "coherence_scores": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "repetition_rates": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "avg_diversity": 0.08166666666666667,
+        "avg_coherence": 0.0,
+        "avg_repetition": 0.0
+      },
+      "Top-k (k=10)": {
+        "samples": [
+          {
+            "text": "ishee se in, nors sor thir, shatt the ale th s tou be s titd am lhathesd ban wat lh bet mitence the tin liniro lor h wond t lorte th hesea touten ther aule he he the aar n hor th theee lhy net,\nThe th",
+            "generation_time": 0.010914087295532227,
+            "chars_per_second": 18324.940472289578
+          },
+          {
+            "text": "e nirtit as in tolerd the sot th tond taunde th,\nIE sh ar b tin autotor ar s the thantor the anot the nom ar hiasors she thete athiarsd, ne med nteus n nanstor sot lande louse tos ange nindid, mane to",
+            "generation_time": 0.013887643814086914,
+            "chars_per_second": 14401.291009287714
+          },
+          {
+            "text": "ind tonsin sanled tathe toudador, nee be not aseta me ne ther the an wireet the be thed inale so t than d my sund son thes th he ang s she thes th hot tin thaar sols biar shese she th who s ne lon ton",
+            "generation_time": 0.011095046997070312,
+            "chars_per_second": 18026.061543751075
+          }
+        ],
+        "diversity_scores": [
+          0.105,
+          0.1,
+          0.095
+        ],
+        "coherence_scores": [
+          0.0,
+          0.0,
+          0.005235602094240788
+        ],
+        "repetition_rates": [
+          0.015,
+          0.0,
+          0.0
+        ],
+        "avg_diversity": 0.10000000000000002,
+        "avg_coherence": 0.0017452006980802626,
+        "avg_repetition": 0.005
+      }
+    }
+  },
+  "dropout_effect": {
+    "with_dropout": {
+      "loss": 0.0,
+      "perplexity": 1.0
+    },
+    "without_dropout": {
+      "loss": 2.614359063887461,
+      "perplexity": 13.658459371999745
+    }
+  },
+  "training_history": {
+    "best_val_loss": 2.672167342245237,
+    "test_perplexity": 14.558412087588051,
+    "best_epoch": 4,
+    "improved_params": {
+      "dropout_rate": 0.1,
+      "use_lr_schedule": true,
+      "top_k_sampling": 5,
+      "warmup_epochs": 5
+    }
+  }
+}

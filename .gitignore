@@ -1,0 +1,48 @@
+# 环境管理 
+.venv/
+venv/
+ENV/
+env/
+conda-env/
+bin/
+lib/
+share/python-wheels/
+
+# 配置文件 
+.env
+.env.local
+.env.*.local
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.python-version
+build/
+develop-eggs/
+dist/
+downloads/
+
+
+# 虚拟 Linux 环境
+.vscode/
+.idea/
+.project
+.pydevproject
+.settings/
+*.swp
+*~
+.DS_Store
+
+# 实验结果与模型权重 
+outputs/
+results/
+logs/
+*.log
+*.pth
+*.npy
+*.npz
+*.pickle
+*.pkl
+
